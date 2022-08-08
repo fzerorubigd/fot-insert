@@ -4,7 +4,7 @@ COMPONENT = $(word 2, $(SPLIT))
 FILE = fot.scad
 TARGET = fot-insert.zip
 
-all: pyramid_tiles worship_tiles building_tiles_small_2x building_tiles_big building_tiles_big_small mask_bonus_tiles_top others_botton players resources optional_spacer
+all: pyramid_tiles worship_tiles building_tiles_small_2x building_tiles_big building_tiles_big_small mask_bonus_tiles_top others_bottom players resources optional_spacer
 	@echo Done!
 
 zip: clean all
@@ -16,7 +16,7 @@ building_tiles_small_2x: box-building_tiles_small_2x lid-building_tiles_small_2x
 building_tiles_big: box-building_tiles_big lid-building_tiles_big
 building_tiles_big_small: box-building_tiles_big_small lid-building_tiles_big_small
 mask_bonus_tiles_top: box-mask_bonus_tiles_top lid-mask_bonus_tiles_top
-others_botton: box-others_botton
+others_bottom: box-others_bottom
 players: box-players lid-players
 resources: box-resources lid-resources
 optional_spacer: box-optional_spacer lid-optional_spacer

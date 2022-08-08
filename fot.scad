@@ -7,7 +7,7 @@ g_b_print_lid = true;
 g_b_print_box = true; 
 
 // Focus on one box
-g_isolated_print_box = "pyramid_tiles"; 
+g_isolated_print_box = "others_bottom"; 
 
 // Used to visualize how all of the boxes fit together. 
 g_b_visualization = f;          
@@ -65,8 +65,8 @@ res_width = z_border+w1+z_border;
 tmpl_width = z_border+w2+z_border;
 
 mask_width = 33; 
-mask_height = 38;
-die_height = 21.5;
+mask_height = 42;
+die_height = 23.5;
 
 masks_width = 3*mask_width+2*z_border_twice;
 masks_height = z_border+mask_height+z_border+die_height+z_border;
@@ -319,7 +319,7 @@ data =
                 ]
             ], 
         ]
-    ],[   "others_botton",
+    ],[   "others_bottom",
         [
             [ BOX_SIZE_XYZ, [masks_width, masks_height, masks_depth] ],
             [ BOX_STACKABLE_B, true],
@@ -344,8 +344,8 @@ data =
                 ]
             ],[ BOX_COMPONENT,
                 [
-                    [CMP_COMPARTMENT_SIZE_XYZ,  [ masks_width-fp_full-5*z_border , masks_height-z_border_twice, sq_tile_depth/2],],
-                    [POSITION_XY,                           [fp_full+3*z_border,0]],
+                    [CMP_COMPARTMENT_SIZE_XYZ,  [ masks_width-fp_full-6*z_border , masks_height-z_border_twice, sq_tile_depth/2],],
+                    [POSITION_XY,                           [fp_full+4*z_border,0]],
                     [ CMP_CUTOUT_BOTTOM_B, true ],
                 ]
             ],
@@ -359,7 +359,6 @@ data =
                             [ LBL_PLACEMENT, CENTER],
                             [ LBL_TEXT,     "Player Tokens"],
                             [ LBL_SIZE,     7],
-                            [ ROTATION,     90 ],
                             [ ENABLED_B, g_print_label ],
                         ]
             ],]
