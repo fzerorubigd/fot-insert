@@ -7,7 +7,7 @@ g_b_print_lid = true;
 g_b_print_box = true; 
 
 // Focus on one box
-g_isolated_print_box = "others_bottom"; 
+g_isolated_print_box = "building_tiles_big_small"; 
 
 // Used to visualize how all of the boxes fit together. 
 g_b_visualization = f;          
@@ -264,21 +264,33 @@ data =
                     [POSITION_XY,                           [0,0]],
                     [CMP_CUTOUT_SIDES_4B, [ f, f, t, t ] ],
                 ]
+            ],[ BOX_COMPONENT,
+                [
+                    [CMP_COMPARTMENT_SIZE_XYZ,  [ w1, w3, sq_tile_depth ],],
+                    [POSITION_XY,                           [res_width/2,w3+z_border]],
+                    [CMP_CUTOUT_SIDES_4B, [ f, f ,t, t] ],
+                ]
+            ],  
+            [ BOX_COMPONENT,
+                [
+                    [CMP_COMPARTMENT_SIZE_XYZ,  [ w1, w3, sq_tile_depth ],],
+                    [POSITION_XY,                           [-res_width/2+z_border,w3+z_border]],
+                    [ CMP_CUTOUT_BOTTOM_B, true ],
+                ]
+            ],[ BOX_COMPONENT,
+                [
+                    [CMP_COMPARTMENT_SIZE_XYZ,  [ w1, w3, sq_tile_depth ],],
+                    [POSITION_XY,                           [res_width+4*z_border_twice-z_border,w3+z_border]],
+                    [ CMP_CUTOUT_BOTTOM_B, true ],
+                ]
             ], 
             [ BOX_COMPONENT,
                 [
                     [CMP_COMPARTMENT_SIZE_XYZ,  [ w2, w2, sq_tile_depth ],],
-                    [POSITION_XY,                           [0,w3+z_border]],
+                    [POSITION_XY,                           [0,w3+w3+z_border_twice]],
                     [CMP_CUTOUT_SIDES_4B, [ f, f, t, t ] ],
                 ]
             ],
-           [ BOX_COMPONENT,
-                [
-                    [CMP_COMPARTMENT_SIZE_XYZ,  [ w1, w3, sq_tile_depth ],],
-                    [POSITION_XY,                           [res_width/2,w3+w2+z_border_twice]],
-                    [CMP_CUTOUT_SIDES_4B, [ t, t, f, f ] ],
-                ]
-            ], 
         ]
         ],[   "mask_bonus_tiles_top",
         [
