@@ -7,7 +7,7 @@ g_b_print_lid = true;
 g_b_print_box = true; 
 
 // Focus on one box
-g_isolated_print_box = "building_tiles_big_small"; 
+g_isolated_print_box = ""; 
 
 // Used to visualize how all of the boxes fit together. 
 g_b_visualization = f;          
@@ -77,7 +77,6 @@ player_height = z_height - tile_height - masks_height;
 
 resource_width = z_width - big_tile_width - small_tile_width;
 resource_height = (z_height - res_width - res_width - tmpl_width - tmpl_width)/2 ;
-echo (resource_width);
 fp_full = 37;
 
  lid_attr = [ LID_SOLID_B, g_lid_solid];
@@ -416,11 +415,16 @@ data =
                 ]
             ],[ BOX_COMPONENT,
                 [
-                    [CMP_COMPARTMENT_SIZE_XYZ,  [ player_width-2*sq_tile_width , player_height-z_border_twice , tile_depth ],],
+                    [CMP_COMPARTMENT_SIZE_XYZ,  [ player_width-2*sq_tile_width-2*z_border_twice , player_height-z_border_twice , tile_depth ],],
                     [POSITION_XY,                           [CENTER,0]],
                     [ CMP_CUTOUT_BOTTOM_B, true ],
                 ]
-            ]],],[   "resources",
+            ],[ BOX_COMPONENT,
+                [
+                    [CMP_COMPARTMENT_SIZE_XYZ,  [ sq_tile_width, sq_tile_width , 10 ],],
+                    [POSITION_XY,                           [CENTER,CENTER]],
+                ]
+            ]]],[   "resources",
         [
             [ BOX_SIZE_XYZ, [resource_width, resource_height, tile_depth] ],
             [ BOX_LID,
