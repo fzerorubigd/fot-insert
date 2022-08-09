@@ -7,7 +7,7 @@ g_b_print_lid = false;
 g_b_print_box = true; 
 
 // Focus on one box
-g_isolated_print_box = "building_tiles_big_small"; 
+g_isolated_print_box = ""; 
 
 // Used to visualize how all of the boxes fit together. 
 g_b_visualization = f;          
@@ -62,7 +62,7 @@ w3 = w1*3;
 
 res_height = z_border+w3+z_border+w2+z_border+w3+z_border;
 res_width = z_border+w1+z_border;
-tmpl_width = z_border+w2+z_border;
+building_width = z_border+w2+z_border;
 
 mask_width = 33; 
 mask_height = 42;
@@ -76,7 +76,8 @@ player_width = 3*mask_width+2*z_border_twice;
 player_height = z_height - tile_height - masks_height;
 
 resource_width = z_width - big_tile_width - small_tile_width;
-resource_height = (z_height - res_width - res_width - tmpl_width - tmpl_width)/2 ;
+// total width - 2 one block building, one two block building, one big-small building that has one extra border
+resource_height = (z_height - res_width - res_width - building_width - building_width-z_border)/2 ;
 fp_full = 37;
 
  lid_attr = [ LID_SOLID_B, g_lid_solid];
@@ -205,7 +206,7 @@ data =
         ]
     ],[   "building_tiles_big",
         [
-            [ BOX_SIZE_XYZ, [tmpl_width, res_height, tile_depth] ],
+            [ BOX_SIZE_XYZ, [building_width, res_height, tile_depth] ],
             [ BOX_STACKABLE_B, false],
             [ BOX_LID,
                  [lid_attr,
@@ -243,7 +244,7 @@ data =
         ]
     ],[   "building_tiles_big_small",
         [
-            [ BOX_SIZE_XYZ, [tmpl_width, res_height, tile_depth] ],
+            [ BOX_SIZE_XYZ, [building_width+z_border, res_height, tile_depth] ],
             [ BOX_STACKABLE_B, false],
             [ BOX_LID,
                                   [lid_attr,
@@ -259,33 +260,33 @@ data =
             ],   
             [ BOX_COMPONENT,
                 [
-                    [CMP_COMPARTMENT_SIZE_XYZ,  [ w2, w3, sq_tile_depth ],],
+                    [CMP_COMPARTMENT_SIZE_XYZ,  [ w2+z_border, w3, sq_tile_depth ],],
                     [POSITION_XY,                           [0,0]],
                     [CMP_CUTOUT_SIDES_4B, [ f, f, t, t ] ],
                 ]
             ],[ BOX_COMPONENT,
                 [
                     [CMP_COMPARTMENT_SIZE_XYZ,  [ w1, w3, sq_tile_depth ],],
-                    [POSITION_XY,                           [res_width/2,w3+z_border]],
-                    [CMP_CUTOUT_SIDES_4B, [ f, f ,t, t] ],
+                    [POSITION_XY,                           [0,w3+z_border]],
+                    [CMP_CUTOUT_SIDES_4B, [ f, f ,t, f] ],
                 ]
-            ],  
-            [ BOX_COMPONENT,
+            ],  [ BOX_COMPONENT,
                 [
-                    [CMP_COMPARTMENT_SIZE_XYZ,  [ w1, w3, sq_tile_depth ],],
-                    [POSITION_XY,                           [-res_width/2+z_border,w3+z_border]],
-                    [ CMP_CUTOUT_BOTTOM_B, true ],
+                    [CMP_COMPARTMENT_SIZE_XYZ,  [ w1, w1, sq_tile_depth ],],
+
+                    [POSITION_XY,                           [w1+z_border,w3+w2+z_border_twice]],
                 ]
-            ],[ BOX_COMPONENT,
-                [
-                    [CMP_COMPARTMENT_SIZE_XYZ,  [ w1, w3, sq_tile_depth ],],
-                    [POSITION_XY,                           [res_width+4*z_border_twice-z_border,w3+z_border]],
-                    [ CMP_CUTOUT_BOTTOM_B, true ],
-                ]
-            ], 
-            [ BOX_COMPONENT,
+            ], [ BOX_COMPONENT,
                 [
                     [CMP_COMPARTMENT_SIZE_XYZ,  [ w2, w2, sq_tile_depth ],],
+[ CMP_CUTOUT_BOTTOM_B, true ],
+                    [POSITION_XY,                           [w1+z_border,w3+z_border]],
+                ]
+            ],
+
+            [ BOX_COMPONENT,
+                [
+                    [CMP_COMPARTMENT_SIZE_XYZ,  [ w2+z_border, w2, sq_tile_depth ],],
                     [POSITION_XY,                           [0,w3+w3+z_border_twice]],
                     [CMP_CUTOUT_SIDES_4B, [ f, f, t, t ] ],
                 ]
