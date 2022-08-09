@@ -1,13 +1,13 @@
 include <bit/boardgame_insert_toolkit_lib.2.scad>;
 
 // determines whether lids are output.
-g_b_print_lid = true;
+g_b_print_lid = false;
 
 // determines whether boxes are output.
 g_b_print_box = true; 
 
 // Focus on one box
-g_isolated_print_box = ""; 
+g_isolated_print_box = "building_tiles_big_small"; 
 
 // Used to visualize how all of the boxes fit together. 
 g_b_visualization = f;          
@@ -441,16 +441,25 @@ data =
                 [
                     [CMP_COMPARTMENT_SIZE_XYZ,  [ (resource_width-2*z_border_twice)/3, resource_height-z_border_twice , tile_depth ],],
                     [POSITION_XY,                           [0,0]],
+                    [CMP_SHAPE, FILLET],
+                    [CMP_FILLET_RADIUS, 20],
+                    [CMP_SHAPE_ROTATED_B, t]
                 ]
             ],[ BOX_COMPONENT,
                 [
                     [CMP_COMPARTMENT_SIZE_XYZ,  [ (resource_width-2*z_border_twice)/3, resource_height-z_border_twice , tile_depth ],],
                     [POSITION_XY,                           [(resource_width-2*z_border_twice)/3+z_border,0]],
+                    [CMP_SHAPE, FILLET],
+                    [CMP_FILLET_RADIUS, 20],
+                    [CMP_SHAPE_ROTATED_B, t]
                 ]
             ],[ BOX_COMPONENT,
                 [
                     [CMP_COMPARTMENT_SIZE_XYZ,  [ (resource_width-2*z_border_twice)/3, resource_height-z_border_twice , tile_depth ],],
                     [POSITION_XY,                           [2*(resource_width-2*z_border_twice)/3+z_border_twice,0]],
+                    [CMP_SHAPE, FILLET],
+                    [CMP_FILLET_RADIUS, 20],
+                    [CMP_SHAPE_ROTATED_B, t]
                 ]
             ]]],[   "optional_spacer",
         [
