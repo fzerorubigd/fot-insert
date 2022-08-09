@@ -1,13 +1,13 @@
 include <bit/boardgame_insert_toolkit_lib.2.scad>;
 
 // determines whether lids are output.
-g_b_print_lid = false;
+g_b_print_lid = true;
 
 // determines whether boxes are output.
-g_b_print_box = true; 
+g_b_print_box = false; 
 
 // Focus on one box
-g_isolated_print_box = ""; 
+g_isolated_print_box = "pyramid_tiles"; 
 
 // Used to visualize how all of the boxes fit together. 
 g_b_visualization = f;          
@@ -36,11 +36,9 @@ g_tolerance_detents_pos = 0.1;
 g_lid_solid = t;
 g_print_label = f;
 
-// Guild of merchant explorer data 
-// This can be set using make file
 
 z_width = 290;
-z_height = 290;
+z_height = 288.5;
 
 z_border = g_wall_thickness;
 z_border_twice = z_border * 2;
@@ -65,15 +63,15 @@ res_width = z_border+w1+z_border;
 building_width = z_border+w2+z_border;
 
 mask_width = 33; 
-mask_height = 42;
-die_height = 23.5;
+mask_height = 40.5;
+die_height = 23;
 
 masks_width = 3*mask_width+2*z_border_twice;
 masks_height = z_border+mask_height+z_border+die_height+z_border;
 masks_depth = tile_depth/2;
 
 player_width = 3*mask_width+2*z_border_twice;
-player_height = z_height - tile_height - masks_height;
+player_height = z_height - tile_height - masks_height ;
 
 resource_width = z_width - big_tile_width - small_tile_width;
 // total width - 2 one block building, one two block building, one big-small building that has one extra border
