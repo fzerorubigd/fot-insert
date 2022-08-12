@@ -1,13 +1,13 @@
 include <bit/boardgame_insert_toolkit_lib.2.scad>;
 
 // determines whether lids are output.
-g_b_print_lid = true;
+g_b_print_lid = false;
 
 // determines whether boxes are output.
-g_b_print_box = false; 
+g_b_print_box = true; 
 
 // Focus on one box
-g_isolated_print_box = "pyramid_tiles"; 
+g_isolated_print_box = ""; 
 
 // Used to visualize how all of the boxes fit together. 
 g_b_visualization = f;          
@@ -37,7 +37,7 @@ g_lid_solid = t;
 g_print_label = f;
 
 
-z_width = 290;
+z_width = 288;
 z_height = 288.5;
 
 z_border = g_wall_thickness;
@@ -73,11 +73,13 @@ masks_depth = tile_depth/2;
 player_width = 3*mask_width+2*z_border_twice;
 player_height = z_height - tile_height - masks_height ;
 
-resource_width = z_width - big_tile_width - small_tile_width;
+resource_width = res_height;
 // total width - 2 one block building, one two block building, one big-small building that has one extra border
-resource_height = (z_height - res_width - res_width - building_width - building_width-z_border)/2 ;
+resource_height = (z_height - res_width - res_width - building_width - building_width-2*z_border_twice)/2 ;
 fp_full = 37;
 
+
+echo (resource_height);
  lid_attr = [ LID_SOLID_B, g_lid_solid];
 
 data =
