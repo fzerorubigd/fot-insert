@@ -1,10 +1,10 @@
 include <bit/boardgame_insert_toolkit_lib.2.scad>;
 
 // determines whether lids are output.
-g_b_print_lid = false;
+g_b_print_lid = t;
 
 // determines whether boxes are output.
-g_b_print_box = true; 
+g_b_print_box = t; 
 
 // Focus on one box
 g_isolated_print_box = ""; 
@@ -371,7 +371,7 @@ data =
                             [ LBL_PLACEMENT, CENTER],
                             [ LBL_TEXT,     "Player Tokens"],
                             [ LBL_SIZE,     7],
-                            [ ENABLED_B, g_print_label ],
+                            [ ENABLED_B, t ],
                         ]
             ],]
             ], [ BOX_COMPONENT,
