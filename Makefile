@@ -10,7 +10,7 @@ all: pyramid_tiles worship_tiles building_tiles_small_2x building_tiles_big buil
 zip: clean all
 	zip $(TARGET) dist/*.stl
 
-pyramid_tiles: box-pyramid_tiles lid-temple_pyramid_tiles
+pyramid_tiles: box-pyramid_tiles lid-pyramid_tiles
 worship_tiles: box-worship_tiles lid-worship_tiles
 building_tiles_small_2x: box-building_tiles_small_2x lid-building_tiles_small_2x  
 building_tiles_big: box-building_tiles_big lid-building_tiles_big
